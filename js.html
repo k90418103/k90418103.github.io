@@ -1,0 +1,869 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>捷勝升學書局</title>
+<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<style>
+.logo {
+	width: 200px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	border: 5px solid #FF5511;
+	border-radius: 20px;
+	box-shadow: 3px 3px 3px 3px #999;
+}
+.bookcover {
+	width: 210px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	box-shadow: 4px 4px 4px 4px #999;
+	border: 5px solid #FFF;
+	border-radius: 10px;
+}
+
+.bg{
+	background-image:url( ' images/bb2.jpg ' );
+	background-size:cover;
+}
+
+.bg2{
+	background-image:url( ' images/bb1.jpg ' );
+	background-size:cover;
+}
+
+.bg3{
+	background-image:url( ' images/bb3.jpg ' );
+	background-size:cover;
+}
+
+#details #bookname {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+}
+#details2 #bookname2 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+}
+
+#details4 #bookname4 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+}
+
+#details5 #bookname5 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+}
+
+#details7 #bookname7 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+}
+</style>
+
+<script language="Javascript">
+ //國小教材-單冊
+ $(function(){
+	 $('#showprev').bind('click', showprev);//上一本書被按時，執行showprev
+	 $('#shownext').bind('click', shownext);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+	var curImgSrc,curBook; // 目前取得的書籍圖檔名、書籍名稱
+	// 書籍圖片
+	var aryBookSrc = new Array("1.jpg",
+	                           "2.jpg",
+				                     "3.jpg",
+	                           "4.jpg",
+					                   "5.jpg",
+														 "6.jpg",
+														 "7.jpg",
+														 "8.jpg",
+														 "9.jpg",
+														 "10.jpg",
+														 "11.jpg",
+														 "12.jpg",
+														 "13.jpg",
+														 "14.jpg",
+														 "15.jpg",
+														 "16.jpg",
+														 "17.jpg",
+														 "18.jpg",
+														 "19.jpg",
+														 "20.jpg",
+														 "21.jpg",
+														 "22.jpg",
+														 "23.jpg",
+														 "24.jpg",
+														 "25.jpg",
+														 "26.jpg",);
+	// 書名
+	var aryBookName = new Array("(康軒)國語自修(各科各年級皆有出版)",
+			                        "(康軒)數學自修(各科各年級皆有出版)",
+			                        "(康軒)社會自修(各科各年級皆有出版)",
+			                        "(康軒)自然自修(各科各年級皆有出版)",
+			                        "(康軒)麻辣數學講義(各科各年級皆有出版)",
+															"(康軒)數學學習講義(各科各年級皆有出版)",
+															"(康軒)國語評量(各科各年級皆有出版)",
+															"(康軒)數學評量(各科各年級皆有出版)",
+															"(康軒)自然評量(各科各年級皆有出版)",
+															"(康軒)社會評量(各科各年級皆有出版)",
+															"(南一)國語自修(各科各年級皆有出版)",
+															"(南一)數學自修(各科各年級皆有出版)",
+															"(南一)自然自修(各科各年級皆有出版)",
+															"(南一)社會自修(各科各年級皆有出版)",
+															"(南一)國語評量(各科各年級皆有出版)",
+															"(南一)數學評量(各科各年級皆有出版)",
+															"(南一)自然評量(各科各年級皆有出版)",
+															"(南一)社會評量(各科各年級皆有出版)",
+															"(翰林)國語自修(各科各年級皆有出版)",
+															"(翰林)數學自修(各科各年級皆有出版)",
+															"(翰林)自然自修(各科各年級皆有出版)",
+															"(翰林)社會自修(各科各年級皆有出版)",
+															"(翰林)國語評量(各科各年級皆有出版)",
+															"(翰林)數學自修(各科各年級皆有出版)",
+															"(翰林)自然自修(各科各年級皆有出版)",
+										 				  "(翰林)社會自修(各科各年級皆有出版)");
+ //上一本書的動作
+ function showprev(){
+	 index--;
+	 if (index<0){index=25;}//可循環
+	 curImgSrc="images/"+ aryBookSrc[index];//取得目前索引所指的圖檔名稱
+	 curBook=  aryBookName[index];//取得目前索引所指的書籍名稱
+	 $("#bookpic").attr("src",curImgSrc);//更換圖案
+	 $("#bookname").text(curBook);//更換書名
+ }
+ //下一本書的動作
+ function shownext(){
+	 index++;
+	 if (index>25){index=0;}//可循環
+	 curImgSrc="images/"+ aryBookSrc[index];//取得目前索引所指的圖檔名稱
+	 curBook=  aryBookName[index];//取得目前索引所指的書籍名稱
+	 $("#bookpic").attr("src",curImgSrc);//更換圖案
+	 $("#bookname").text(curBook);//更換書名
+ }
+
+
+
+ //國小教材-輔助教材
+ $(function(){
+ 	$('#showprev7').bind('click', showprev7);//上一本書被按時，執行showprev
+ 	$('#shownext7').bind('click', shownext7);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+  var curImgSrc7,curBook7; // 目前取得的書籍圖檔名、書籍名稱
+  // 書籍圖片
+  var aryBookSrc7 = new Array("1.jpg",
+ 														"2.jpg",
+ 														"3.jpg",
+ 														"4.jpg",
+ 														"5.jpg",
+ 														"6.jpg",
+ 														"7.jpg",
+ 														"8.jpg",
+ 														"9.jpg",
+ 														"10.jpg",
+ 														"11.jpg",
+ 														"12.jpg",
+ 														"13.jpg",
+ 														"14.jpg",
+ 														"15.jpg",
+ 														"16.jpg",
+ 														"17.jpg",
+ 														"18.jpg",
+ 														"19.jpg",
+ 														"20.jpg",
+ 														"21.jpg",
+ 														"22.jpg",
+ 														"23.jpg",
+ 														"24.jpg",
+ 														"25.jpg",
+ 														"26.jpg",
+													  "27.jpg",
+												    "28.jpg",
+											      "29.jpg",
+										        "30.jpg",);
+  // 書名
+  var aryBookName7 = new Array("(翰林)形音義小達人(各年級皆有出版)",
+ 														   "(翰林)成語小達人(各年級皆有出版)",
+ 														   "(翰林)閱讀小達人(各年級皆有出版)",
+ 														   "(翰林)閱讀智慧王(各年級皆有出版)",
+ 														   "(翰林)語文小達人(各年級皆有出版)",
+ 														   "(翰林)成語小達人(各年級皆有出版)",
+ 														   "(翰林)數學解題百分百(各年級皆有出版)",
+ 														   "(翰林)計算特訓(各年級皆有出版)",
+ 														   "(翰林)勝算120回(各年級皆有出版)",
+ 														   "(翰林)計算小達人(各年級皆有出版)",
+ 														   "(翰林)應用小達人(各年級皆有出版)",
+ 														   "(康軒)閱讀易上手(各年級皆有出版)",
+ 														   "(康軒)成語易上手(各年級皆有出版)",
+ 														   "(康軒)作文易上手(各年級皆有出版)",
+ 														   "(康軒)數學過招100回(各年級皆有出版)",
+ 														   "(康軒)計算高手(各年級皆有出版)",
+ 														   "(康軒)應用高手(各年級皆有出版)",
+ 														   "(南一)閱讀小行家(各年級皆有出版)",
+ 														   "(南一)成語小行家(各年級皆有出版)",
+ 														   "(南一)寫作小行家(各年級皆有出版)",
+ 														   "(南一)數學精熟計算(各年級皆有出版)",
+ 														   "(南一)數學練功房(各年級皆有出版)",
+ 														   "(南一)數學進階應用(各年級皆有出版)",
+ 														   "(百世)國學常識 高年級",
+ 														   "(百世)創造思考 一年級",
+ 														   "(百世)字型達人(各年級皆有出版)",
+														   "(百世)句子達人(各年級皆有出版)",
+														   "(百盛)智力測驗(第一集)",
+													     "(百盛)智力測驗(第二集)",
+												       "(百盛)智力測驗(第三集)",);
+ //上一本書的動作
+ function showprev7(){
+ 	index--;
+ 	if (index<0){index=29;}//可循環
+ 	curImgSrc7="images5/"+ aryBookSrc7[index];//取得目前索引所指的圖檔名稱
+ 	curBook7=  aryBookName7[index];//取得目前索引所指的書籍名稱
+ 	$("#bookpic7").attr("src",curImgSrc7);//更換圖案
+ 	$("#bookname7").text(curBook7);//更換書名
+ }
+ //下一本書的動作
+ function shownext7(){
+ 	index++;
+ 	if (index>29){index=0;}//可循環
+ 	curImgSrc7="images5/"+ aryBookSrc7[index];//取得目前索引所指的圖檔名稱
+ 	curBook7=  aryBookName7[index];//取得目前索引所指的書籍名稱
+ 	$("#bookpic7").attr("src",curImgSrc7);//更換圖案
+ 	$("#bookname7").text(curBook7);//更換書名
+ }
+
+
+ //國中教材介紹-單冊
+ $(function(){
+ 	$('#showprev2').bind('click', showprev2);//上一本書被按時，執行showprev
+ 	$('#shownext2').bind('click', shownext2);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+  var curImgSrc2,curBook2; // 目前取得的書籍圖檔名、書籍名稱
+  // 書籍圖片
+  var aryBookSrc2 = new Array("b1.jpg",
+ 														  "b2.jpg",
+ 														  "b3.jpg",
+ 														  "b4.jpg",
+ 														  "b5.jpg",
+														  "b6.jpg",
+											        "b7.jpg",
+									            "b8.jpg",
+												     "b10.jpg",
+												     "b11.jpg",
+													   "b12.jpg",
+												     "b13.jpg",
+											       "b14.jpg",
+										         "b15.jpg",
+													   "b16.jpg",
+												     "b17.jpg",
+											       "b18.jpg",
+										         "b19.jpg",
+									           "b20.jpg",
+													   "b21.jpg",
+												     "b22.jpg",
+											       "b23.jpg",
+										         "b24.jpg",
+									           "b25.jpg",
+													   "b26.jpg",
+												     "b27.jpg",
+											       "b28.jpg",
+										         "b29.jpg",);
+  // 書名
+  var aryBookName2 = new Array("(翰林)超級翰將國文科(各科各年級皆有出版)",
+ 														   "(翰林)超級翰將數學科(各科各年級皆有出版)",
+ 														   "(翰林)超級翰將自然科(各科各年級皆有出版)",
+ 														   "(翰林)超級翰將英文科(各科各年級皆有出版)",
+ 														   "(翰林)教學式國文科(各科各年級皆有出版)",
+														   "(翰林)教學式數學科(各科各年級皆有出版)",
+													     "(翰林)教學式英文科(各科各年級皆有出版)",
+												       "(翰林)教學式自然科(各科各年級皆有出版)",
+														   "(翰林)試題寶典地理科(各科各年級皆有出版)",
+													     "(翰林)試題寶典公民科(各科各年級皆有出版)",
+												       "(翰林)試題寶典歷史科(各科各年級皆有出版)",
+														   "(康軒)麻辣講義數學科(各科各年級皆有出版)",
+													     "(康軒)麻辣講義英文科(各科各年級皆有出版)",
+												       "(康軒)麻辣講義自然科(各科各年級皆有出版)",
+														   "(康軒)學習講義國文科(各科各年級皆有出版)",
+													     "(康軒)學習講義英文科(各科各年級皆有出版)",
+												       "(康軒)學習講義數學科(各科各年級皆有出版)",
+												       "(康軒)學習講義自然科(各科各年級皆有出版)",
+											         "(康軒)學習講義公民科(各科各年級皆有出版)",
+											         "(康軒)學習講義歷史科(各科各年級皆有出版)",
+										           "(康軒)學習講義地理科(各科各年級皆有出版)",
+														   "(南一)點線面講義國文科(各科各年級皆有出版)",
+														   "(南一)點線面講義英文科(各科各年級皆有出版)",
+													     "(南一)點線面講義數學科(各科各年級皆有出版)",
+												       "(南一)點線面講義自然科(各科各年級皆有出版)",
+											         "(南一)學習標竿講義歷史科(各科各年級皆有出版)",
+										           "(南一)學習標竿講義地理科(各科各年級皆有出版)",
+									             "(南一)學習標竿講義公民科(各科各年級皆有出版)",);
+ //上一本書的動作
+ function showprev2(){
+ 	index--;
+ 	if (index<0){index=27;}//可循環
+ 	curImgSrc2="images2/"+ aryBookSrc2[index];//取得目前索引所指的圖檔名稱
+ 	curBook2=  aryBookName2[index];//取得目前索引所指的書籍名稱
+ 	$("#bookpic2").attr("src",curImgSrc2);//更換圖案
+ 	$("#bookname2").text(curBook2);//更換書名
+ }
+ //下一本書的動作
+ function shownext2(){
+ 	index++;
+ 	if (index>27){index=0;}//可循環
+ 	curImgSrc2="images2/"+ aryBookSrc2[index];//取得目前索引所指的圖檔名稱
+ 	curBook2=  aryBookName2[index];//取得目前索引所指的書籍名稱
+ 	$("#bookpic2").attr("src",curImgSrc2);//更換圖案
+ 	$("#bookname2").text(curBook2);//更換書名
+}
+
+
+
+
+
+ //國中教材介紹-總複習
+ $(function(){
+  $('#showprev4').bind('click', showprev4);//上一本書被按時，執行showprev
+  $('#shownext4').bind('click', shownext4);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+  var curImgSrc4,curBook4; // 目前取得的書籍圖檔名、書籍名稱
+  // 書籍圖片
+  var aryBookSrc4 = new Array("1.jpg",
+ 														  "2.jpg",
+ 														  "3.jpg",
+ 														  "4.jpg",
+ 														  "5.jpg",
+														  "6.jpg",
+											        "7.jpg",
+												      "8.jpg",
+											        "9.jpg",
+										          "10.jpg",
+									            "11.jpg",
+								              "12.jpg",
+							                "13.jpg",
+						                  "14.jpg",
+					                    "15.jpg",
+														  "16.jpg",
+													    "17.jpg",
+												      "18.jpg",
+											        "19.jpg",
+										          "20.jpg",
+														  "21.jpg",
+													    "22.jpg",
+												      "23.jpg",
+											        "24.jpg",
+										          "25.jpg",
+														  "26.jpg",
+													    "27.jpg",
+													    "28.jpg",
+												      "29.jpg",
+												      "30.jpg",);
+  // 書名
+  var aryBookName4 = new Array("(康軒)3800應用題彙編國文科",
+ 															 "(康軒)3800應用題彙編英文科",
+														   "(康軒)3800應用題彙編數學科",
+													     "(康軒)3800應用題彙編自然科",
+												       "(康軒)3800應用題彙編社會科",
+                               "(翰林)3800應用題彙編國文科",
+														   "(翰林)3800應用題彙編英文科",
+													     "(翰林)3800應用題彙編數學科",
+													     "(翰林)3800應用題彙編自然科",
+												       "(翰林)3800應用題彙編社會科",
+														   "(鼎甲)會考94-106年歷屆試題國文科",
+														   "(鼎甲)會考94-106年歷屆試題英文科",
+													     "(鼎甲)會考94-106年歷屆試題數學科",
+												       "(鼎甲)會考94-106年歷屆試題自然科",
+											         "(鼎甲)會考94-106年歷屆試題社會科",
+														   "(南一)3688應用題彙編國文科",
+													     "(南一)3688應用題彙編英文科",
+												       "(南一)3688應用題彙編數學科",
+											         "(南一)3688應用題彙編自然科",
+										           "(南一)3688應用題彙編社會科",
+															 "(漢華)5000+搶分題彙整國文科",
+														   "(漢華)5000+搶分題彙整英文科",
+														   "(漢華)5000+搶分題彙整數學科",
+													     "(漢華)5000+搶分題彙整自然科",
+													     "(漢華)5000+搶分題彙整社會科",
+														   "(高昇)考前30天國文科",
+													     "(高昇)考前30天英文科",
+												       "(高昇)考前30天數學科",
+											         "(高昇)考前30天自然科",
+										           "(高昇)考前30天社會科",);
+ //上一本書的動作
+ function showprev4(){
+  index--;
+  if (index<0){index=29;}//可循環
+  curImgSrc4="images3/"+ aryBookSrc4[index];//取得目前索引所指的圖檔名稱
+  curBook4=  aryBookName4[index];//取得目前索引所指的書籍名稱
+  $("#bookpic4").attr("src",curImgSrc4);//更換圖案
+  $("#bookname4").text(curBook4);//更換書名
+ }
+ //下一本書的動作
+ function shownext4(){
+  index++;
+  if (index>29){index=0;}//可循環
+  curImgSrc4="images3/"+ aryBookSrc4[index];//取得目前索引所指的圖檔名稱
+  curBook4=  aryBookName4[index];//取得目前索引所指的書籍名稱
+  $("#bookpic4").attr("src",curImgSrc4);//更換圖案
+  $("#bookname4").text(curBook4);//更換書名
+ }
+
+
+
+ //國中教材介紹-輔助教材
+ $(function(){
+  $('#showprev5').bind('click', showprev5);//上一本書被按時，執行showprev
+  $('#shownext5').bind('click', shownext5);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+  var curImgSrc5,curBook5; // 目前取得的書籍圖檔名、書籍名稱
+  // 書籍圖片
+  var aryBookSrc5 = new Array("1.jpg",
+ 														  "2.jpg",
+ 														  "3.jpg",
+ 														  "4.jpg",
+ 														  "5.jpg",
+														  "6.jpg",
+													    "7.jpg",
+												      "8.jpg",
+											        "9.jpg",
+										         "10.jpg",
+													   "11.jpg",
+												     "12.jpg",
+											       "13.jpg",
+										         "14.jpg",
+									           "15.jpg",
+													   "16.jpg",
+												     "17.jpg",
+											       "18.jpg",
+										         "19.jpg",
+									           "20.jpg",
+													   "21.jpg",
+												     "22.jpg",
+											       "23.jpg",
+										         "24.jpg",
+									           "25.jpg",
+													   "26.jpg",
+												     "27.jpg",
+                             "28.jpg",
+												     "29.jpg",
+													   "30.jpg",);
+  // 書名
+  var aryBookName5 = new Array("(翰林)文意大哥大",
+	                             "(翰林)新秀閱讀題組",
+ 														   "(翰林)日日讀名言佳句",
+														   "(翰林)語文大哥大",
+														   "(翰林)不只要開花",
+														   "(翰林)日日讀成語",
+													     "(翰林)背熟A-Z單字2000",
+												       "(翰林)克漏字閱讀理解",
+											         "(翰林)長文讀解fun輕鬆",
+										           "(翰林)英文情境式閱讀",
+									             "(翰林)單字2000活用練習",
+														   "(康軒)國文主題式閱讀題組",
+														   "(康軒)國文文意總匯",
+														   "(康軒)語文綜合練習",
+														   "(康軒)活化語文腦細胞",
+														   "(康軒)成語棒棒堂",
+														   "(康軒)英文閱讀異想世界 必勝篇",
+														   "(康軒)新必學句型",
+														   "(康軒)新必學文法",
+														   "(南一)成語閱讀雙效學",
+														   "(南一)國文閱讀題組",
+														   "(南一)語文大哥大",
+														   "(南一)文意判讀",
+                               "(南一)經典文言100",
+														   "(南一)晨讀任意門",
+														   "(南一)我的18週長文閱讀計畫",
+														   "(南一)常用字彙SUPER 2000",
+														   "(南一)主題式會考英聽達人(上)",
+														   "(南一)主題式會考英聽達人(下)",
+														   "(南一)主題式活學活用基本字彙1200",);
+ //上一本書的動作
+ function showprev5(){
+  index--;
+  if (index<0){index=29;}//可循環
+  curImgSrc5="images4/"+ aryBookSrc5[index];//取得目前索引所指的圖檔名稱
+  curBook5=  aryBookName5[index];//取得目前索引所指的書籍名稱
+  $("#bookpic5").attr("src",curImgSrc5);//更換圖案
+  $("#bookname5").text(curBook5);//更換書名
+ }
+ //下一本書的動作
+ function shownext5(){
+  index++;
+  if (index>29){index=0;}//可循環
+  curImgSrc5="images4/"+ aryBookSrc5[index];//取得目前索引所指的圖檔名稱
+  curBook5=  aryBookName5[index];//取得目前索引所指的書籍名稱
+  $("#bookpic5").attr("src",curImgSrc5);//更換圖案
+  $("#bookname5").text(curBook5);//更換書名
+ }
+</script>
+
+</head>
+
+
+
+<body>
+<!-- *** home page 首頁*** -->
+<div data-role="page" id="home" class="bg">
+
+  <div data-role="content">
+    <div class="logo">
+      <p><img src="images/js.png" alt="捷勝書局" width="200" height="200" /></p>
+    </div>
+    <h1 align="center"><font face="標楷體">~捷勝升學書局~</font></h1>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">
+        <a href="https://www.knsh.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">康軒文教事業</a>
+      </div>
+      <div class="ui-block-b">
+        <a href="https://books.hanlin.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">翰林出版</a>
+      </div>
+    </div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="https://trans.nani.com.tw/NaniWeb/" data-icon="star" data-role="button" data-theme="e" target="_blank">南一書局</a> <!--增加 -->
+			</div>
+			<div class="ui-block-b">
+				<a href="http://www.king-an.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">金安文教機構</a> <!--增加 -->
+			</div>
+		</div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="http://www.chiding.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">奇鼎事業</a> <!--增加 -->
+			</div>
+			<div class="ui-block-b">
+				<a href="https://www.english4u.net/web/default.aspx" data-icon="star" data-role="button" data-theme="e" target="_blank">ＡＭＣ空中美語</a> <!--增加 -->
+			</div>
+		</div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="https://www.liveabc.com/index.asp" data-icon="star" data-role="button" data-theme="e" target="_blank">Ｌｉｖｅ　ＡＢＣ互動英語</a> <!--增加 -->
+			</div>
+			<div class="ui-block-b">
+				<a href="http://www.pearson.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">PＥＡＲＳＯＮ　培生</a> <!--增加 -->
+			</div>
+		</div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="https://www.cavesbooks.com.tw/EC/#2" data-icon="star" data-role="button" data-theme="e" target="_blank">敦煌書局</a> <!--增加 -->
+			</div>
+			<div class="ui-block-b">
+				<a href="https://www.ivy.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">常春藤</a> <!--增加 -->
+			</div>
+		</div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="http://www.learningpro.com.tw/" data-icon="star" data-role="button" data-theme="e" target="_blank">漢華文教</a> <!--增加 -->
+			</div>
+			<div class="ui-block-b">
+				<a href="https://www.lungteng.com.tw/Web/Index.aspx" data-icon="star" data-role="button" data-theme="e" target="_blank">龍騰文化</a> <!--增加 -->
+			</div>
+		</div>
+	</div>
+
+
+
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar" data-theme="a">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">~~歡迎瀏覽 ! ! 捷勝升學書局網站~~</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+                <li><a href="#details6" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a href="#details3" data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="index.html" data-icon="info" target="_blank">前往新版網頁</a></li> <!--增加 -->
+			</ul>
+		</div>
+  </div>
+</div>
+
+
+<!-- *** details page 國小教材介紹類別*** -->
+<div data-role="page" id="details6" class="bg2">
+
+  <div data-role="header">
+		<h1>捷勝書局</h1>
+
+	</div>
+	<div data-role="content">
+
+	 <center><h1><font face="標楷體">請選擇教材類別:</font></h1></center>
+
+	 <div class="ui-grid-a">
+		<div class="ui-block-a">
+			<a href="#details" data-icon="star" data-role="button" data-theme="e" data-transition="fade">單冊</a>
+		</div>
+		<div class="ui-block-b">
+			<a href="#details7" data-icon="star" data-role="button" data-theme="e" data-transition="fade">輔助教材</a>
+		</div>
+	 </div>
+  </div>
+
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">貼心提醒:輔助教材不分版本，各版本都適用</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a class="ui-btn-active ui-state-persist" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a href="#details3"  data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#home" data-icon="back" data-transition="fade">返回首頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- *** details page 國小教材介紹-單冊*** -->
+<div data-role="page" id="details" class="bg3">
+
+  <div data-role="header">
+		<a href="#" id="showprev" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+		<h1>國小教材介紹-單冊</h1>
+		<a href="#" id="shownext" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+	</div>
+	<div data-role="content">
+		 <div class="bookcover">
+			<img src="images/1.jpg" name="bookpic" width="210" height="284" id="bookpic">
+		 </div>
+		 <p id="bookname">(康軒)國語自修(各科各年級皆有出版)</p>
+	</div>
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a class="ui-btn-active ui-state-persist" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a href="#details3" data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#details6" data-icon="back" data-transition="fade">上一頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- *** details page 國小教材介紹-輔材*** -->
+<div data-role="page" id="details7" class="bg3">
+
+  <div data-role="header">
+		<a href="#" id="showprev7" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+		<h1>國小教材介紹-輔助教材</h1>
+		<a href="#" id="shownext7" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+	</div>
+	<div data-role="content">
+		 <div class="bookcover">
+			<img src="images5/1.jpg" name="bookpic7" width="210" height="284" id="bookpic7">
+		 </div>
+		 <p id="bookname7">(翰林)形音義小達人(各年級皆有出版)</p>
+	</div>
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="6" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a class="ui-btn-active ui-state-persist" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a href="#details3" data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#details6" data-icon="back" data-transition="fade">上一頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- *** details page 國中教材介紹類別*** -->
+<div data-role="page" id="details3" class="bg2">
+
+  <div data-role="header">
+		<h1>捷勝書局</h1>
+
+	</div>
+	<div data-role="content">
+
+	 <center><h1><font face="標楷體">請選擇教材類別:</font></h1></center>
+
+	 <div class="ui-grid-b">
+		<div class="ui-block-a">
+			<a href="#details2" data-icon="star" data-role="button" data-theme="e" data-transition="fade">單冊</a>
+		</div>
+		<div class="ui-block-b">
+			<a href="#details4" data-icon="star" data-role="button" data-theme="e" data-transition="fade">會考總複習</a>
+		</div>
+		<div class="ui-block-c">
+			<a href="#details5" data-icon="star" data-role="button" data-theme="e" data-transition="fade">輔助教材</a>
+		</div>
+	 </div>
+	</div>
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">貼心提醒:輔助教材及會考總複習教材不分版本，各版本都適用</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a href="#details6" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a class="ui-btn-active ui-state-persist"  data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#home" data-icon="back" data-transition="fade">返回首頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- *** details page 國中教材介紹*單冊** -->
+<div data-role="page" id="details2" class="bg3">
+
+  <div data-role="header">
+		<a href="#" id="showprev2" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+		<h1>國中教材介紹-單冊</h1>
+		<a href="#" id="shownext2" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+	</div>
+	<div data-role="content">
+		 <div class="bookcover">
+			<img src="images2/b1.jpg" name="bookpic2" width="210" height="284" id="bookpic2">
+		 </div>
+		 <p id="bookname2">(翰林)超級翰將國文科(各科各年級皆有出版)</p>
+	</div>
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a href="#details6" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a class="ui-btn-active ui-state-persist"  data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#details3" data-icon="back" data-transition="fade">上一頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- *** details page 國中教材介紹*總複習** -->
+<div data-role="page" id="details4" class="bg3">
+
+  <div data-role="header">
+		<a href="#" id="showprev4" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+		<h1>國中教材介紹-會考總複習</h1>
+		<a href="#" id="shownext4" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+	</div>
+	<div data-role="content">
+		 <div class="bookcover">
+			<img src="images3/1.jpg" name="bookpic4" width="210" height="284" id="bookpic4">
+		 </div>
+		 <p id="bookname4">(康軒)3800應用題彙編國文科</p>
+	</div>
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a href="#details6" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a class="ui-btn-active ui-state-persist"  data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#details3" data-icon="back" data-transition="fade">上一頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- *** details page 國中教材介紹*輔助教材** -->
+<div data-role="page" id="details5" class="bg3">
+
+  <div data-role="header">
+		<a href="#" id="showprev5" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+		<h1>國中教材介紹-輔助教材</h1>
+		<a href="#" id="shownext5" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+	</div>
+	<div data-role="content">
+		 <div class="bookcover">
+			<img src="images4/1.jpg" name="bookpic5" width="210" height="284" id="bookpic5">
+		 </div>
+		 <p id="bookname5">(翰林)文意大哥大</p>
+	</div>
+
+  <div data-role="footer" data-position="fixed" data-id="toolbar">
+		<marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+    <div data-role="navbar">
+      <ul>
+				<li><a href="#about" data-icon="search" data-rel="dialog" data-transition="pop">關於捷勝</a></li>
+				<li><a href="#details6" data-icon="info" data-transition="fade">國小教材介紹</a></li>
+				<li><a class="ui-btn-active ui-state-persist"  data-icon="info" data-transition="fade">國中教材介紹</a></li>
+				<li><a href="https://books.hanlin.com.tw/Version" data-icon="info" target="_blank">各校版本查詢</a></li> <!--增加 -->
+				<li><a href="#details3" data-icon="back" data-transition="fade">上一頁</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- *** about page 關於*** -->
+ <div data-role="page" id="about">
+   <div data-role="header">
+    <h1>捷勝升學書局</h1>
+   </div>
+  <div data-role="content">
+	捷勝秉持著（便捷服務，力勝一切）的服務理念，希望提供所有老師，同學以及家長更加便捷的服務，
+	我們累積多年銷售藝文、教育圖書之經驗，因此我們引進最具教育性與娛樂性商品，重視進存貨調度
+	以及每一批貨的市場需求，從進貨到出貨都會經過嚴格點交，並與上游下游保持良好互動關係，相互協助，
+	永保產業領域資訊之完整性。</br></br>
+  地址：高雄市左營區華夏路９３１號　</br>
+	連絡電話：０７－３４５６６３３</br>
+	營業時間：０９：００～２２：００（假日照常營業）
+  </div>
+</div>
+</body>
+</html>

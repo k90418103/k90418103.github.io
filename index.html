@@ -1,63 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>照片集</title>
-</head>
-<body  onload="startClock()" onunload="stopClock()">
-    <div id="show"></div>
-    <h2>照片集</h2>
-    <img src="pic00.jpg" alt="" onmousedown="this.src=nextImage()"
-                                onmouseover="this.src=randomImage()">
-    <script>
-      var curIndex=0;
-      var imgArray=new Array();
-      var pics=12;
+  <head>
+    <title>新!捷勝升學書局</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      for(i=0;i<pics;i++)
-      {
-          imgArray[i]=new Image();
-          if(i<10)
-          imgArray[i].src="pic0"+i+".jpg";
-          else
-          imgArray[i].src="pic"+i+".jpg";
-      }
-      function nextImage(){
-          curIndex++;
-          curIndex=curIndex % pics;
-          return(imgArray[curIndex].src);
-      }
-      function randomImage(){
-          curIndex=Math.floor(Math.random()*imgArray.length);
-           return(imgArray[curIndex].src);
-      }
-        var timer = null;
-// 顯示數字圖片
-      function displayClock(num) {
-        var dig = parseInt(num/10);
-        var timetag="<img src='images\\" + dig + ".gif'>";
-        dig = num%10;
-        timetag +="<img src='images\\" + dig + ".gif'>";
-      return timetag;
-}
-// 停止計時
-      function stopClock() {
-       clearTimeout(timer);
-}
-// 開始計時
-      function startClock() {
-         var time = new Date();
-   // 取得時間
-         var hours = displayClock(time.getHours()) + ":";
-         var minutes = displayClock(time.getMinutes()) + ":";
-         var seconds = displayClock(time.getSeconds());
-   // 顯示時間
-      show.innerHTML = hours + minutes + seconds;
-      timer = setTimeout("startClock()",1000);
-}
-    </script>
-</body>
-</html>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
     
+    
+<style>
+
+.bg{
+	background-image:url( ' images/bb2.jpg ' );
+	background-size:cover;
+}
+.bg2{
+        background-image:url( ' images/bb7.jpg ' );
+	background-size:cover; 
+}
+.color {
+	
+        background : rgb(241, 115, 4);
+	
+       }
+.color2 {
+	
+        background : rgb(237, 241, 4);
+	
+       }    
+</style>
+
+
+  </head>
+  <body>
+   <!-- *** home page 首頁*** -->
+   <div  id="Home" class="bg">
+                <div id="linkweb" style="font-family:標楷體">
+                        <script>
+                        setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000); 
+                        </script>
+                </div>
+      <div  class="row header justify-content-md-center">
+          <div class="col-2 ">
+            <img class="img-fluid" src="images/js.png" alt="" style="width:110px;height:110px;border: 5px solid rgb(252, 106, 3) ">
+          </div>
+          <div class="col-3">
+               <div class="row h1" style="font-family:UD Digi Kyokasho NK-B">
+                 <span>~捷勝升學書局~</span>
+               </div>
+               <div class="row h3" style="font-family:Castellar">
+                 <span>JIE SHENG BOOKSTORE</span>
+               </div>
+          </div>
+      </div>
+
+
+      <div class="row justify-content-md-center">
+          <div class="col-10">
+                <marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #99FFFF><font face="UD Digi Kyokasho NP-R" size="4px">~~歡迎瀏覽 ! ! 新!捷勝升學書局網站~~</font></marquee>
+          </div>     
+          <div class="col-10">
+            <nav class="navbar navbar-expand-lg navbar-light color2  h4 " style="font-family:UD Digi Kyokasho N-R">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="details.html"><i class="fa fa-cogs" aria-hidden="true"></i>國小單冊教材</a>
+                    <a class="nav-item nav-link" href="details7.html"><i class="fa fa-handshake-o" aria-hidden="true"></i>國小輔助教材</a>
+		    <a class="nav-item nav-link" href="details2.html"><i class="fa fa-globe" aria-hidden="true"></i>國中單冊教材</a>
+		    <a class="nav-item nav-link" href="details4.html"><i class="fa fa-globe" aria-hidden="true"></i>國中總複習教材</a>
+		    <a class="nav-item nav-link" href="details5.html"><i class="fa fa-globe" aria-hidden="true"></i>國中輔助教材</a>
+                    <a class="nav-item nav-link" href="https://books.hanlin.com.tw/Version"><i class="fa fa-globe" aria-hidden="true"></i>各校版本查詢</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i>
+                          各大出版社
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item h5" href="https://www.hle.com.tw/">翰林出版</a>
+                          <a class="dropdown-item h5" href="https://www.knsh.com.tw/">康軒文教</a>
+                          <a class="dropdown-item h5" href="https://trans.nani.com.tw/NaniWeb/">南一書局</a>
+                          <a class="dropdown-item h5" href="http://www.king-an.com.tw/">金安文教</a>
+                          <a class="dropdown-item h5" href="http://www.chiding.com.tw/">奇鼎事業</a>
+                          <a class="dropdown-item h5" href="https://www.english4u.net/web/default.aspx">ＡＭＣ空中美語</a>
+                          <a class="dropdown-item h5" href="https://www.liveabc.com/index.asp">ＬｉｖｅＡＢＣ互動英語</a>
+                          <a class="dropdown-item h5" href="http://www.pearson.com.tw/">PＥＡＲＳＯＮ培生</a>
+                          <a class="dropdown-item h5" href="https://www.cavesbooks.com.tw/EC/#2">敦煌書局</a>
+                          <a class="dropdown-item h5" href="https://www.ivy.com.tw/">常春藤</a>
+                          <a class="dropdown-item h5" href="https://www.lungteng.com.tw/Web/Index.aspx">龍騰文化</a>
+                          <a class="dropdown-item h5" href="http://www.sanmin.com.tw/#">三民書局</a>
+                          <a class="dropdown-item h5" href="https://www.visionbook.com.tw/home">晟景出版社</a>
+                          <a class="dropdown-item h5" href="http://www.learningpro.com.tw/">漢華文教</a>
+                        </div>
+                   </li>
+                   <a class="nav-item nav-link" href="js.html"><i class="fa fa-globe" aria-hidden="true"></i>舊版網頁</a>
+                  </div>
+                </div>
+                
+            </nav>
+          </div>
+      </div>
+
+
+      <div class="row justify-content-md-center">
+                <ol class="carousel-indicators col-8">
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="1" class="active"></li>
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="2" class="active"></li>
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="3" class="active"></li>
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="4" class="active"></li>
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="5" class="active"></li>
+                        <li data-target="#carouselExampleSlidesOnly" data-slide-to="6" class="active"></li>
+                </ol>
+        <div class="carousel-inner col-8">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img class="d-block w-100" src="xx/1.jpg" alt="First slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="xx/2.jpg" alt="Second slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="xx/3.jpg" alt="Third slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="xx/4.jpg" alt="fourth slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="xx/5.jpg" alt="fifth slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="xx/6.jpg" alt="sixth slide">
+                          </div>
+                          <div class="carousel-item">
+                                <img class="d-block w-100" src="xx/7.jpg" alt="seventh slide">
+                          </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                        </a>
+                </div>
+        </div>
+      </div>
+
+
+      <div class="row justify-content-md-center" style="font-family: UD Digi Kyokasho N-R">
+        <div class="col-10">
+                <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="pills-home" aria-selected="true">新書快訊</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="pills-profile" aria-selected="false">國小熱門</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="contact-tab" data-toggle="pill" href="#contact" role="tab" aria-controls="pills-contact" aria-selected="false">國中熱門</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="activity-tab" data-toggle="pill" href="#activity" role="tab" aria-controls="pills-activity" aria-selected="false">活動資訊</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row" style="font-size:10pt">
+                                <div class="col-3 h5">
+                                        <img src="images6/3.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(翰林)閱讀小達人</div>
+                                        
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images6/4.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(翰林)閱讀智慧王</div>
+                                        
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images6/16.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)計算高手</div>
+                                        
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images6/a.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)3800+國文科</div>
+                                       
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images6/b.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)3800+英文科</div>
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images6/c.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)3800+數學科</div>
+                                        
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images6/d.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)3800+自然科</div>
+                                        
+                                </div>
+                                <div class="col-3  h5">
+                                        <img src="images6/e.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)3800+社會科</div>
+                                       
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row" style="font-size:10pt">
+                                <div class="col-3 h5">
+                                        <img src="images5/7.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(翰林)數學解題百分百</div>
+                                        
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/19.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(南一)成語小行家</div>
+                                       
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/12.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(康軒)閱讀易上手</div>
+
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/10.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(翰林)計算小達人</div>
+                                       
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/9.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(翰林)勝算120回</div>
+
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/24.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(百盛)國學常識</div>
+
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/26.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(百盛)字形達人</div>
+
+                                </div>
+                                <div class="col-3 h5">
+                                        <img src="images5/27.jpg" alt="" style="width:200px;height:280px;">
+                                        <div>(王百世)句子達人</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="row" style="font-size:10pt">
+                                        <div class="col-3 h5">
+                                                <img src="images4/6.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(翰林)日日讀成語</div>
+                                                
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/16.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(康軒)成語棒棒堂</div>
+                                                
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/25.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(南一)晨讀任意門</div>
+                                               
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/22.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(南一)語文大富翁</div>
+                                                
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/5.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(翰林)不只要開花</div>
+                                                
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/15.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(康軒)活化語文腦細胞</div>
+                                                
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/7.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(翰林)背熟A~Z單字2000</div>
+                                                
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="images4/27.jpg" alt="" style="width:200px;height:280px;">
+                                                <div>(南一)主題式常用字彙2000</div>
+                                                
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                                <div class="row" style="font-size:10pt">
+                                        <div class="col-3 h5">
+                                                <img src="activity/1.jpg" alt="">
+                                                <div>色廊展</div>
+                                                <div class="h6">地點:高雄國立科學工藝博物館</div>
+                                                <div class="h6">時間:2018/6/9~8/26</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/2.jpg" alt="">
+                                                <div>扭蛋星球</div>
+                                                <div class="h6">地點:高雄駁二藝術特區大勇倉庫群P2倉庫 </div>
+                                                <div class="h6">時間:2018/6/23~9/16</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/3.jpg" alt="">
+                                                <div>玩美攝影棚 </div>
+                                                <div class="h6">地點:高雄駁二藝術特區蓬萊倉庫B3/B4棟 </div>
+                                                <div class="h6">時間:2018/6/27~9/16</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/4.jpg" alt="">
+                                                <div>微型展-田中達也的奇想世界</div>
+                                                <div class="h6">地點:台中世貿中心 </div>
+                                                <div class="h6">時間:2018/6/22~9/9</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/5.jpg" alt="">
+                                                <div>小火車X顛倒屋2.0特展</div>
+                                                <div class="h6">地點:高雄駁二藝術特區P3倉庫 </div>
+                                                <div class="h6">時間:2018/6/15~9/2</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/6.jpg" alt="">
+                                                <div>卡娜赫拉的愜意小鎮特展-高雄站</div>
+                                                <div class="h6">地點:高雄駁二藝術特區B3/B4倉庫 </div>
+                                                <div class="h6">時間:2018/6/22~9/2</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/7.jpg" alt="">
+                                                <div>侏羅紀 X 恐龍樂園</div>
+                                                <div class="h6">地點:高雄駁二藝術特區自行車倉庫 </div>
+                                                <div class="h6">時間:2018/6/30~9/2</div>
+                                        </div>
+                                        <div class="col-3 h5">
+                                                <img src="activity/8.jpg" alt="">
+                                                <div>恐龍夢公園</div>
+                                                <div class="h6">地點:嘉義文化創意產業園區 </div>
+                                                <div class="h6">時間:2018/5/20~2019/5/19</div>
+                                        </div>
+                                </div>
+                        </div>
+                      </div>
+        </div>
+       </div>
+       
+       <div class="row footer bg2">
+           <div class="col-3">
+              <img src="images/js.png" alt="" style="width:110px;height:110px;border: 5px solid rgb(252, 3, 107)">
+	   </div>
+	   <div class="col-9 h4" style="font-family:UD Digi Kyokasho NK-B">
+              <small>
+                地址:高雄市左營區華夏路931號(新光國小對面)
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">
+                                關於捷勝書局
+                              </button>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalCenterTitle">關於捷勝書局</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                                捷勝秉持著（便捷服務，力勝一切）的服務理念，希望提供所有老師，同學以及家長更加便捷的服務，
+                                                我們累積多年銷售藝文、教育圖書之經驗，因此我們引進最具教育性與娛樂性商品，重視進存貨調度
+                                                以及每一批貨的市場需求，從進貨到出貨都會經過嚴格點交，並與上游下游保持良好互動關係，相互協助，
+                                                永保產業領域資訊之完整性。</br></br>
+                                                地址：高雄市左營區華夏路９３１號(新光國小對面)　</br>
+                                                連絡電話：０７－３４５６６３３</br>
+                                                營業時間：０９：００～２２：００（假日照常營業）
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div></br>
+                營業時間:AM09:00~PM22:00（假日照常營業）</br>
+                TEL:07-3456633/3453722</br>
+                FAX:07-3435256
+              </small>
+              
+           </div>
+       </div>
+    </div>
+    
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+              
+    
+  </body>
+</html>

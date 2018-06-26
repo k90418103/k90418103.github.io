@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>國小輔助教材</title>
+    <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+    <style>
+        .bookcover {
+	width: 210px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	box-shadow: 4px 4px 4px 4px rgb(66, 63, 63);
+	border: 5px solid #FFF;
+	border-radius: 10px;
+    }
+    .bg3{
+	background-image:url( ' images/bb8.jpg ' );
+	background-size:cover;
+    }
+    #details7 #bookname7 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+    }
+    </style>
+    <script language="Javascript">
+        //國小教材-輔助教材
+ $(function(){
+ 	$('#showprev7').bind('click', showprev7);//上一本書被按時，執行showprev
+ 	$('#shownext7').bind('click', shownext7);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+  var curImgSrc7,curBook7; // 目前取得的書籍圖檔名、書籍名稱
+  // 書籍圖片
+  var aryBookSrc7 = new Array("1.jpg",
+ 														"2.jpg",
+ 														"3.jpg",
+ 														"4.jpg",
+ 														"5.jpg",
+ 														"6.jpg",
+ 														"7.jpg",
+ 														"8.jpg",
+ 														"9.jpg",
+ 														"10.jpg",
+ 														"11.jpg",
+ 														"12.jpg",
+ 														"13.jpg",
+ 														"14.jpg",
+ 														"15.jpg",
+ 														"16.jpg",
+ 														"17.jpg",
+ 														"18.jpg",
+ 														"19.jpg",
+ 														"20.jpg",
+ 														"21.jpg",
+ 														"22.jpg",
+ 														"23.jpg",
+ 														"24.jpg",
+ 														"25.jpg",
+ 														"26.jpg",
+													  "27.jpg",
+												    "28.jpg",
+											      "29.jpg",
+										        "30.jpg",);
+  // 書名
+  var aryBookName7 = new Array("(翰林)形音義小達人(各年級皆有出版)",
+ 														   "(翰林)成語小達人(各年級皆有出版)",
+ 														   "(翰林)閱讀小達人(各年級皆有出版)",
+ 														   "(翰林)閱讀智慧王(各年級皆有出版)",
+ 														   "(翰林)語文小達人(各年級皆有出版)",
+ 														   "(翰林)成語小達人(各年級皆有出版)",
+ 														   "(翰林)數學解題百分百(各年級皆有出版)",
+ 														   "(翰林)計算特訓(各年級皆有出版)",
+ 														   "(翰林)勝算120回(各年級皆有出版)",
+ 														   "(翰林)計算小達人(各年級皆有出版)",
+ 														   "(翰林)應用小達人(各年級皆有出版)",
+ 														   "(康軒)閱讀易上手(各年級皆有出版)",
+ 														   "(康軒)成語易上手(各年級皆有出版)",
+ 														   "(康軒)作文易上手(各年級皆有出版)",
+ 														   "(康軒)數學過招100回(各年級皆有出版)",
+ 														   "(康軒)計算高手(各年級皆有出版)",
+ 														   "(康軒)應用高手(各年級皆有出版)",
+ 														   "(南一)閱讀小行家(各年級皆有出版)",
+ 														   "(南一)成語小行家(各年級皆有出版)",
+ 														   "(南一)寫作小行家(各年級皆有出版)",
+ 														   "(南一)數學精熟計算(各年級皆有出版)",
+ 														   "(南一)數學練功房(各年級皆有出版)",
+ 														   "(南一)數學進階應用(各年級皆有出版)",
+ 														   "(百世)國學常識 高年級",
+ 														   "(百世)創造思考 一年級",
+ 														   "(百世)字型達人(各年級皆有出版)",
+														   "(百世)句子達人(各年級皆有出版)",
+														   "(百盛)智力測驗(第一集)",
+													     "(百盛)智力測驗(第二集)",
+												       "(百盛)智力測驗(第三集)",);
+ //上一本書的動作
+ function showprev7(){
+ 	index--;
+ 	if (index<0){index=29;}//可循環
+ 	curImgSrc7="images5/"+ aryBookSrc7[index];//取得目前索引所指的圖檔名稱
+ 	curBook7=  aryBookName7[index];//取得目前索引所指的書籍名稱
+ 	$("#bookpic7").attr("src",curImgSrc7);//更換圖案
+ 	$("#bookname7").text(curBook7);//更換書名
+ }
+ //下一本書的動作
+ function shownext7(){
+ 	index++;
+ 	if (index>29){index=0;}//可循環
+ 	curImgSrc7="images5/"+ aryBookSrc7[index];//取得目前索引所指的圖檔名稱
+ 	curBook7=  aryBookName7[index];//取得目前索引所指的書籍名稱
+ 	$("#bookpic7").attr("src",curImgSrc7);//更換圖案
+ 	$("#bookname7").text(curBook7);//更換書名
+ }
+
+    </script>
+
+</head>
+<body>
+<!-- *** details page 國小教材介紹-輔材*** -->
+<div data-role="page" id="details7" class="bg3">
+
+        <div data-role="header">
+              <a href="#" id="showprev7" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+              <h1>國小教材介紹-輔助教材</h1>
+              <a href="#" id="shownext7" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+          </div>
+          <div data-role="content">
+               <div class="bookcover">
+                  <img src="images5/1.jpg" name="bookpic7" width="210" height="284" id="bookpic7">
+               </div>
+               <p id="bookname7">(翰林)形音義小達人(各年級皆有出版)</p>
+          </div>
+      
+        <div data-role="footer" data-position="fixed" data-id="toolbar">
+              <marquee direction="left" scrollamount="6" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+			  <div data-role="navbar">
+                    <ul>
+                        <li><a data-ajax ="false" href ="index.html" data-icon="back" data-transition="fade" behavior="bottom">返回首頁</a></li>
+                    </ul>
+                </div>
+        </div>
+      </div>
+      
+</body>
+</html>
