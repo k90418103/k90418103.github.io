@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 國小教材介紹-單冊</title>
+    <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+    <style>
+    .bg3{
+	        background-image:url( ' images/bb8.jpg ' );
+	        background-size:cover;
+        }
+    #details #bookname {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+    }
+    .bookcover {
+	width: 210px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	box-shadow: 4px 4px 4px 4px rgb(66, 63, 63);
+	border: 5px solid #FFF;
+	border-radius: 10px;
+    }
+
+    </style>
+    <script language="Javascript">
+            //國小教材-單冊
+            $(function(){
+                $('#showprev').bind('click', showprev);//上一本書被按時，執行showprev
+                $('#shownext').bind('click', shownext);//下一本書被按時，執行shownext
+            });
+             var index=0;           // 目前書籍的索引
+               var curImgSrc,curBook; // 目前取得的書籍圖檔名、書籍名稱
+               // 書籍圖片
+               var aryBookSrc = new Array(     "1.jpg",
+                                               "2.jpg",
+                                   "3.jpg",
+                                               "4.jpg",
+                                   "5.jpg",
+                                                   "6.jpg",
+                                   "7.jpg",
+                               "8.jpg",
+                               "9.jpg",
+                               "10.jpg",
+                               "11.jpg",
+                                "12.jpg",
+                               "13.jpg",
+                               "14.jpg",
+                               "15.jpg",
+                               "16.jpg",
+                               "17.jpg",
+                               "18.jpg",
+                               "19.jpg",
+                               "20.jpg",
+                               "21.jpg",
+                               "22.jpg",
+                               "23.jpg",
+                               "24.jpg",
+                               "25.jpg",
+                               "26.jpg",);
+               // 書名
+               var aryBookName = new Array(    
+                               "(康軒)國語自修(各科各年級皆有出版)",
+                                "(康軒)數學自修(各科各年級皆有出版)",
+                                "(康軒)社會自修(各科各年級皆有出版)",
+                                "(康軒)自然自修(各科各年級皆有出版)",
+                                "(康軒)麻辣數學講義(各科各年級皆有出版)",
+                               "(康軒)數學學習講義(各科各年級皆有出版)",
+                               "(康軒)國語評量(各科各年級皆有出版)",
+                               "(康軒)數學評量(各科各年級皆有出版)",
+                               "(康軒)自然評量(各科各年級皆有出版)",
+                               "(康軒)社會評量(各科各年級皆有出版)",
+                               "(南一)國語自修(各科各年級皆有出版)",
+                               "(南一)數學自修(各科各年級皆有出版)",
+                               "(南一)自然自修(各科各年級皆有出版)",
+                               "(南一)社會自修(各科各年級皆有出版)",
+                               "(南一)國語評量(各科各年級皆有出版)",
+                               "(南一)數學評量(各科各年級皆有出版)",
+                               "(南一)自然評量(各科各年級皆有出版)",
+                               "(南一)社會評量(各科各年級皆有出版)",
+                               "(翰林)國語自修(各科各年級皆有出版)",
+                               "(翰林)數學自修(各科各年級皆有出版)",
+                               "(翰林)自然自修(各科各年級皆有出版)",
+                               "(翰林)社會自修(各科各年級皆有出版)",
+                               "(翰林)國語評量(各科各年級皆有出版)",
+                               "(翰林)數學自修(各科各年級皆有出版)",
+                               "(翰林)自然自修(各科各年級皆有出版)",
+                               "(翰林)社會自修(各科各年級皆有出版)");
+            //上一本書的動作
+            function showprev(){
+                index--;
+                if (index<0){index=25;}//可循環
+                curImgSrc="images/"+ aryBookSrc[index];//取得目前索引所指的圖檔名稱
+                curBook=  aryBookName[index];//取得目前索引所指的書籍名稱
+                $("#bookpic").attr("src",curImgSrc);//更換圖案
+                $("#bookname").text(curBook);//更換書名
+            }
+            //下一本書的動作
+            function shownext(){
+                index++;
+                if (index>25){index=0;}//可循環
+                curImgSrc="images/"+ aryBookSrc[index];//取得目前索引所指的圖檔名稱
+                curBook=  aryBookName[index];//取得目前索引所指的書籍名稱
+                $("#bookpic").attr("src",curImgSrc);//更換圖案
+                $("#bookname").text(curBook);//更換書名
+            }
+    </script>
+</head>
+<body>
+    <!-- *** details page 國小教材介紹-單冊*** -->
+<div data-role="page" id="details" class="bg3">
+
+        <div data-role="header">
+              <a href="#" id="showprev" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+              <h1>國小教材介紹-單冊</h1>
+              <a href="#" id="shownext" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+          </div>
+          <div data-role="content">
+               <div class="bookcover">
+                  <img src="images/1.jpg" name="bookpic" width="210" height="284" id="bookpic">
+               </div>
+               <p id="bookname">(康軒)國語自修(各科各年級皆有出版)</p>
+          </div>
+        <div data-role="footer" data-position="fixed" data-id="toolbar">
+              <marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-ajax ="false" href ="index.html" data-icon="back" data-transition="fade" behavior="bottom">返回首頁</a></li>
+                    </ul>
+                </div>
+        </div>
+      </div>
+</body>
+</html>

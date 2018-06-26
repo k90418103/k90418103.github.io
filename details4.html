@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>國中總複習教材</title>
+    <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+    <style>
+        .bookcover {
+	width: 210px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	box-shadow: 4px 4px 4px 4px rgb(66, 63, 63);
+	border: 5px solid #FFF;
+	border-radius: 10px;
+}
+.bg3{
+	background-image:url( ' images/bb8.jpg ' );
+	background-size:cover;
+}
+#details4 #bookname4 {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	color: #03C;
+	text-align: center;
+}
+    </style>
+    <script language="Javascript">
+       //國中教材介紹-總複習
+ $(function(){
+  $('#showprev4').bind('click', showprev4);//上一本書被按時，執行showprev
+  $('#shownext4').bind('click', shownext4);//下一本書被按時，執行shownext
+ });
+  var index=0;           // 目前書籍的索引
+  var curImgSrc4,curBook4; // 目前取得的書籍圖檔名、書籍名稱
+  // 書籍圖片
+  var aryBookSrc4 = new Array(  "1.jpg",
+ 				"2.jpg",
+ 				"3.jpg",
+ 				"4.jpg",
+ 				"5.jpg",
+				"6.jpg",
+				"7.jpg",
+				"8.jpg",
+				"9.jpg",
+				"10.jpg",
+				"11.jpg",
+		                "12.jpg",
+				"13.jpg",
+				"14.jpg",
+				"15.jpg",
+				"16.jpg",
+				"17.jpg",
+				"18.jpg",
+				"19.jpg",
+				"20.jpg",
+				"21.jpg",
+				"22.jpg",
+				"23.jpg",
+				"24.jpg",
+				"25.jpg",
+				"26.jpg",
+				"27.jpg",
+				"28.jpg",
+				"29.jpg",
+				"30.jpg",);
+  // 書名
+  var aryBookName4 = new Array( "(康軒)3800應用題彙編國文科",
+ 				"(康軒)3800應用題彙編英文科",
+				"(康軒)3800應用題彙編數學科",
+				"(康軒)3800應用題彙編自然科",
+				"(康軒)3800應用題彙編社會科",
+                                "(翰林)3800應用題彙編國文科",
+				"(翰林)3800應用題彙編英文科",
+				"(翰林)3800應用題彙編數學科",
+				"(翰林)3800應用題彙編自然科",
+				"(翰林)3800應用題彙編社會科",
+				"(鼎甲)會考94-106年歷屆試題國文科",
+			        "(鼎甲)會考94-106年歷屆試題英文科",
+				"(鼎甲)會考94-106年歷屆試題數學科",
+				"(鼎甲)會考94-106年歷屆試題自然科",
+				"(鼎甲)會考94-106年歷屆試題社會科",
+				"(南一)3688應用題彙編國文科",
+				"(南一)3688應用題彙編英文科",
+				"(南一)3688應用題彙編數學科",
+				"(南一)3688應用題彙編自然科",
+				"(南一)3688應用題彙編社會科",
+				"(漢華)5000+搶分題彙整國文科",
+				"(漢華)5000+搶分題彙整英文科",
+				"(漢華)5000+搶分題彙整數學科",
+				"(漢華)5000+搶分題彙整自然科",
+				"(漢華)5000+搶分題彙整社會科",
+				"(高昇)考前30天國文科",
+				"(高昇)考前30天英文科",
+				"(高昇)考前30天數學科",
+				"(高昇)考前30天自然科",
+			        "(高昇)考前30天社會科",);
+ //上一本書的動作
+ function showprev4(){
+  index--;
+  if (index<0){index=29;}//可循環
+  curImgSrc4="images3/"+ aryBookSrc4[index];//取得目前索引所指的圖檔名稱
+  curBook4=  aryBookName4[index];//取得目前索引所指的書籍名稱
+  $("#bookpic4").attr("src",curImgSrc4);//更換圖案
+  $("#bookname4").text(curBook4);//更換書名
+ }
+ //下一本書的動作
+ function shownext4(){
+  index++;
+  if (index>29){index=0;}//可循環
+  curImgSrc4="images3/"+ aryBookSrc4[index];//取得目前索引所指的圖檔名稱
+  curBook4=  aryBookName4[index];//取得目前索引所指的書籍名稱
+  $("#bookpic4").attr("src",curImgSrc4);//更換圖案
+  $("#bookname4").text(curBook4);//更換書名
+ }
+     </script>
+</head>
+<body>
+    <!-- *** details page 國中教材介紹*總複習** -->
+<div data-role="page" id="details4" class="bg3">
+
+        <div data-role="header">
+              <a href="#" id="showprev4" data-icon="arrow-l" data-role="button" data-theme="d">上一本書</a>
+              <h1>國中教材介紹-會考總複習</h1>
+              <a href="#" id="shownext4" data-icon="arrow-r" data-role="button" data-theme="d">下一本書</a>
+          </div>
+          <div data-role="content">
+               <div class="bookcover">
+                  <img src="images3/1.jpg" name="bookpic4" width="210" height="284" id="bookpic4">
+               </div>
+               <p id="bookname4">(康軒)3800應用題彙編國文科</p>
+          </div>
+      
+        <div data-role="footer" data-position="fixed" data-id="toolbar">
+              <marquee direction="left" scrollamount="7" height="25" behavior="bottom" bgcolor= #000000><font face="標楷體" size="4px">注意 ! ! 本網站所提供之教材封面僅供參考，實際情況請依出版社印刷為主</font></marquee>
+			  <div data-role="navbar">
+                    <ul>
+                        <li><a data-ajax ="false" href ="index.html" data-icon="back" data-transition="fade" behavior="bottom">返回首頁</a></li>
+                    </ul>
+                </div>
+        </div>
+      </div>
+      
+      
+</body>
+</html>
